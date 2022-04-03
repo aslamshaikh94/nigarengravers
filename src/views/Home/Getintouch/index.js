@@ -1,10 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
+import emailjs from 'emailjs-com'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { InputField, Textarea } from '@shared/FormFields'
+import addToaster from '@shared/Notification'
 import './index.scss'
 
 const Getintouch = () => {
-  const handleChange = () => {}
+  const [formData, setFormData] = useState({})
+
+  const handleChange = e => {
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
+
+  const sendEmail = e => {
+    e.preventDefault()
+
+    emailjs
+      .sendForm(
+        'service_5wu9pci',
+        'template_8ynt6kc',
+        e.target,
+        'elTlAkHDsSBeXkV5r'
+      )
+      .then(
+        () => {
+          addToaster('success', 'Thank you! We will connect you soon')
+        },
+        error => {
+          addToaster('error', error.text)
+        }
+      )
+  }
+
+  const { name, email, mobile, message } = formData
+
   return (
     <section className='getintouch bg-gray' id='touch'>
       <Container>
@@ -15,34 +45,55 @@ const Getintouch = () => {
         <div className='mb-5'>
           <Row>
             <Col lg={5} sm={12}>
-              <Row>
-                <Col lg={6}>
-                  <InputField label='Name' value='' onChange={handleChange} />
-                </Col>
-                <Col lg={6}>
-                  <InputField label='Email' value='' onChange={handleChange} />
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <InputField label='Mobile' value='' onChange={handleChange} />
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Textarea
-                    label='Message'
-                    rows={4}
-                    value=''
-                    onChange={handleChange}
-                  />
-                </Col>
-              </Row>
-              <Row className='mt-2'>
-                <Col>
-                  <Button variant='dark'>Submit</Button>
-                </Col>
-              </Row>
+              <form onSubmit={sendEmail}>
+                <Row>
+                  <Col lg={6}>
+                    <InputField
+                      label='Name'
+                      name='name'
+                      value={name}
+                      onChange={handleChange}
+                    />
+                  </Col>
+                  <Col lg={6}>
+                    <InputField
+                      label='Email'
+                      name='email'
+                      value={email}
+                      onChange={handleChange}
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <InputField
+                      label='Mobile'
+                      name='mobile'
+                      value={mobile}
+                      onChange={handleChange}
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Textarea
+                      label='Message'
+                      rows={4}
+                      name='message'
+                      value={message}
+                      onChange={handleChange}
+                    />
+                  </Col>
+                </Row>
+                <Row className='mt-2'>
+                  <Col>
+                    <Button variant='dark' type='submit'>
+                      Submit
+                    </Button>
+                  </Col>
+                </Row>
+              </form>
+
               <Row className='mt-5'>
                 <Col>
                   <h5>Nigar Engravers</h5>
