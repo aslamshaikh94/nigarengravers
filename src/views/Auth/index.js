@@ -1,25 +1,17 @@
 import React, { useState } from 'react'
-import history from '@history'
 import {
   callUserSigninWithEmailPasswordApi,
-  callCurrentUserTokenIdApi,
-  signInWithGoogle
+  callCurrentUserTokenIdApi
 } from '@api/auth'
 import { userAuthSuccessAction } from '@actions'
-import {
-  ADMIN_ROUTE,
-  RESET_PASSWORD_ROUTE,
-  SIGNUP_ROUTE,
-  SIGNIN_ROUTE
-} from '@constants/routes'
+import { ADMIN_ROUTE } from '@constants/routes'
 import { ERROR_MESSAGES } from '@constants/'
 import { useStore, setAppStore } from '@store'
 import { useSelector } from 'react-redux'
 import { validatePassword, validateEmail } from '@utils'
 import Button from 'react-bootstrap/Button'
 import { InputField } from '@shared/FormFields'
-import { Link, Navigate } from 'react-router-dom'
-import GoogleIcon from '@assets/images/google-logo.png'
+import { Navigate } from 'react-router-dom'
 import './index.scss'
 
 const Auth = () => {
@@ -107,36 +99,6 @@ const Auth = () => {
     handleSignIn()
   }
 
-  const handleSignInWithGoogle = async () => {
-    const {
-      status,
-      data: {
-        user: {
-          uid: userId,
-          displayName,
-          email,
-          phoneNumber,
-          emailVerified,
-          photoURL
-        } = {}
-      }
-    } = await signInWithGoogle()
-    if (status === 200) {
-      const jwtToken = await callCurrentUserTokenIdApi()
-      const loggedInUserData = {
-        emailVerified,
-        userId,
-        displayName,
-        photoURL,
-        token: jwtToken,
-        email,
-        phoneNumber
-      }
-      dispatch(userAuthSuccessAction(loggedInUserData))
-      return <Navigate to={ADMIN_ROUTE} />
-    }
-  }
-
   if (userId) return <Navigate to={ADMIN_ROUTE} />
 
   return (
@@ -165,26 +127,11 @@ const Auth = () => {
             <Button
               type='submit'
               variant='primary'
-              size='lg'
-              // block
+              className='btn-block'
               onClick={handleSignIn}
             >
               Sign In
             </Button>
-            <Button
-              className='googleBtn'
-              size='lg'
-              // block
-              onClick={handleSignInWithGoogle}
-            >
-              <img src={GoogleIcon} /> Sign Up with Google
-            </Button>
-            <Link to={RESET_PASSWORD_ROUTE} className='ResetPassword Link'>
-              Forgot Password
-            </Link>
-            <Link className='btn btn-lg btn-block' to={SIGNUP_ROUTE}>
-              Don't have account?
-            </Link>
           </form>
         </div>
       </div>
