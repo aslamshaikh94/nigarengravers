@@ -1,0 +1,13 @@
+@import '@shared/_colors', '@shared/_mixins';
+
+.StarRating {
+  @include flex();
+  gap: 5px;
+  .Star {
+    font-size: 1.8rem;
+    cursor: pointer;
+    .bi-star-fill {
+      color: $golden;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import '@shared/_colors', '@shared/_mixins';
+
+.CardWrapper {
+  box-shadow: 0px 8px 20px rgba(112, 144, 176, 0.15);
+  border-radius: 5px;
+  padding: 20px 30px;
+  background-color: $white;
+  + .CardWrapper {
+    margin-top: 20px;
+  }
+  .Summary {
+    margin-bottom: 15px;
+    p {
+      margin-bottom: 0;
+    }
+  }
+  .FooterInfo {
+    @include flex($a: center, $j: space-between, $w: wrap);
+    margin-top: 20px;
+    border-top: 1px solid $silver;
+    padding-bottom: 0;
+
+    h4 {
+      font-size: 1.425rem;
+      margin: 0;
+      small {
+        font-weight: normal;
+      }
+    }
+    .BtnGroup {
+      @include flex($a: center, $w: wrap);
+      gap: 15px;
+      @media (max-width: $mobileTab) {
+        @include flex($d: column, $a: stretch);
+        width: 100%;
+      }
+      .btn {
+        min-width: 135px;
+        font-size: 1.142rem;
+      }
+    }
+  }
+}

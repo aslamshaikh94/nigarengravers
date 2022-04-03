@@ -1,0 +1,80 @@
+@import '@shared/_colors', '@shared/_mixins';
+
+.ProfileCard {
+  @include flex($d: column);
+  border-radius: 5px;
+  border: 1px solid $silver;
+  padding: 20px;
+  height: 100%;
+  cursor: pointer;
+  background-color: $white;
+  .CardHeader {
+    @include flex($j: space-between);
+    .ActionBtn {
+      @include flex();
+      gap: 10px;
+    }
+  }
+  &.Centered {
+    text-align: center;
+  }
+  .UserPhoto {
+    width: 70px;
+    height: 70px;
+    margin-right: 25px;
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 100px;
+      border: 1px solid $silver;
+      object-fit: contain;
+    }
+    .Status {
+      display: block;
+      height: 13px;
+      width: 13px;
+      background-color: $yellow;
+      position: absolute;
+      right: 0;
+      bottom: 10px;
+      border-radius: 10px;
+      border: 1px solid $white;
+      &.Online {
+        background-color: $green;
+      }
+    }
+  }
+  .Body {
+    margin-top: 1rem;
+    flex-grow: 1;
+    .Name {
+      color: $blue;
+      font-weight: 500;
+      margin-bottom: 5px;
+      .Location {
+        font-size: 0.857rem;
+        color: #999999;
+        margin-left: 15px;
+        &::before {
+          content: '';
+          display: inline-block;
+          width: 6px;
+          height: 6px;
+          top: -1px;
+          position: relative;
+          margin-right: 5px;
+          border-radius: 100px;
+          background-color: #999999;
+        }
+      }
+    }
+    .Designation {
+      font-weight: 600;
+    }
+  }
+  .ProfileFooter {
+    @include flex($j: space-between);
+    margin-top: 1rem;
+  }
+}

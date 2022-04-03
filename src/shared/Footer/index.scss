@@ -1,0 +1,31 @@
+@import '@shared/_colors';
+
+.Footer {
+  background-color: #0a1d31;
+  padding-top: 5rem;
+  font-family: 'Manrope', sans-serif;
+  .LinkGroup {
+    color: $white;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    .LingTitle {
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    > li {
+      padding: 0;
+      margin: 0;
+      + li {
+        margin-top: 0.8rem;
+      }
+    }
+  }
+  .CopyRight {
+    margin-top: 5rem;
+    padding: 1rem 0;
+    border-top: 1px solid $darkGray;
+    color: $white;
+  }
+}

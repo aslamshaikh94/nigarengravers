@@ -1,0 +1,11 @@
+@import '@shared/_colors', '@shared/_mixins';
+
+.MakeBid {
+  .Bid {
+    padding: 10px 20px;
+    width: fit-content;
+    background-color: $skyBlue;
+    border-radius: 2px;
+    margin-bottom: 30px;
+  }
+}

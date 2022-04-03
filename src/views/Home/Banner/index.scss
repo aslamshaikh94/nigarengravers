@@ -1,0 +1,73 @@
+@import '@shared/_colors', '@shared/_mixins';
+
+.banner {
+  @include flex($a: center, $j: center);
+  position: relative;
+  width: 100%;
+  background: url('@assets/images/intro-bg.jpeg') no-repeat left;
+  background-size: cover;
+  .bannerimage {
+    width: 100%;
+  }
+  .content {
+    width: 100%;
+    position: absolute;
+    .respo-center {
+      @media (max-width: $mobileTab) {
+        @include flex($j: center);
+      }
+      .home-banner {
+        width: 600px;
+        height: 600px;
+        @media (max-width: $mobileTab) {
+          width: 300px;
+          height: 300px;
+        }
+      }
+    }
+    .intro {
+      margin-top: -50px;
+      @media (max-width: $mobileTab) {
+        margin: 0;
+      }
+      h2 {
+        color: $black;
+        font-family: 'Playfair Display', serif;
+        font-size: 5rem;
+        @media (max-width: $mobileTab) {
+          font-size: 3rem;
+        }
+      }
+      .title {
+        font-size: 16px;
+        color: $red;
+        letter-spacing: 0.1em;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+      .subtitle {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        color: #74757f;
+        @media (max-width: $mobileTab) {
+          font-size: 2rem;
+        }
+      }
+      .intro__text {
+        font-size: 1.2rem;
+        color: $gray;
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+  .tagline {
+    @include flex($j: flex-end);
+    color: $white;
+    text-align: right;
+    .heading {
+      max-width: 700px;
+    }
+  }
+}

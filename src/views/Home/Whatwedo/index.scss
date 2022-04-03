@@ -1,0 +1,25 @@
+@import '@shared/_colors', '@shared/_mixins';
+.whatwedo {
+  .article-box {
+    @include flex($a: center, $j: center, $d: column);
+    text-align: center;
+    .title {
+      font-family: 'Playfair Display', serif;
+      color: $black;
+      font-size: 2rem;
+      margin: 1rem 0;
+    }
+  }
+  .icon-box {
+    width: 70px;
+    height: 70px;
+    border: 2px solid $silver;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon {
+      font-size: 2rem;
+      color: $red;
+    }
+  }
+}

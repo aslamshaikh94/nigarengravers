@@ -1,0 +1,38 @@
+@import "./_colors.scss";
+
+@mixin flex(
+  $d: false,
+  $j: false,
+  $a: false,
+  $w: false,
+  $g: false,
+  $s: false,
+  $f: flex
+) {
+  display: $f;
+  @if $d {
+    flex-direction: $d;
+  }
+  @if $j {
+    justify-content: $j;
+  }
+  @if $a {
+    align-items: $a;
+  }
+  @if $w {
+    flex-wrap: $w;
+  }
+  @if $g {
+    flex-grow: $g;
+  }
+  @if $s {
+    flex-shrink: $s;
+  }
+}
+
+@mixin wrapper {
+  padding-bottom: 20px;
+}
+
+$mobileTab: 768px;
+$mobile: 425px;

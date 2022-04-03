@@ -1,0 +1,66 @@
+@import "@shared/_colors", "@shared/_mixins";
+
+.form-group {
+  flex-grow: 1;
+  .form-text {
+    text-align: right;
+  }
+
+  .react-tel-input .form-control {
+    width: 100%;
+  }
+  .ErrorMessage {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #d21c09;
+  }
+}
+.form-label {
+  @include flex();
+  gap: 2px;
+  .asterisk-icon {
+    font-size: 0.45rem;
+    top: 0;
+    color: $red;
+  }
+}
+
+.FormFieldGroup {
+  margin-bottom: 1rem;
+  position: relative;
+  .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  &.None {
+    margin: 0;
+  }
+  .Inline {
+    margin-right: 1rem;
+  }
+  .Top {
+    display: block;
+  }
+  .OptionsGroup {
+    @include flex($f: inline-flex, $a: center);
+    height: calc(2rem + 0.75rem + 2px);
+  }
+  &.vertical {
+    .OptionsGroup {
+      display: block;
+      height: auto;
+    }
+  }
+  .form-control,
+  .custom-select {
+    border-radius: 2px;
+    height: calc(2rem + 0.75rem + 2px);
+    &.None {
+      background-color: transparent;
+    }
+  }
+}

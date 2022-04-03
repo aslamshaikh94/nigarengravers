@@ -1,0 +1,71 @@
+@import '@shared/_colors', '@shared/_mixins';
+
+.ProfileInfo {
+  @include flex($a: center, $w: wrap);
+  .UserPhoto {
+    width: 70px;
+    height: 70px;
+    margin-right: 25px;
+    position: relative;
+    @media (max-width: $mobileTab) {
+      width: 50px;
+      height: 50px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 100px;
+      border: 1px solid $silver;
+      object-fit: contain;
+    }
+    .Status {
+      display: block;
+      height: 13px;
+      width: 13px;
+      background-color: $yellow;
+      position: absolute;
+      right: 0;
+      bottom: 10px;
+      border-radius: 10px;
+      border: 1px solid $white;
+      &.Online {
+        background-color: $green;
+      }
+    }
+  }
+}
+.UserInfo {
+  @include flex($j: center, $d: column);
+  margin-right: auto;
+  width: auto;
+  @media (max-width: $mobile) {
+    order: 2;
+    margin-top: 10px;
+    width: 100%;
+  }
+  .Name {
+    color: $blue;
+    font-weight: 500;
+    margin-bottom: 5px;
+    .Location {
+      font-size: 0.857rem;
+      color: #999999;
+      margin-left: 15px;
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        top: -1px;
+        position: relative;
+        margin-right: 5px;
+        border-radius: 100px;
+        background-color: #999999;
+      }
+    }
+  }
+  .Designation {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+}

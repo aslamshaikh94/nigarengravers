@@ -1,0 +1,13 @@
+@import '@shared/_colors', '@shared/_mixins';
+.Messages {
+  margin-bottom: 30px;
+  .Message {
+    padding: 10px 20px;
+    width: fit-content;
+    background-color: $skyBlue;
+    border-radius: 2px;
+    + .Message {
+      margin-top: 20px;
+    }
+  }
+}

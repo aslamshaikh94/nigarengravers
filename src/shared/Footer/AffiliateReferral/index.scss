@@ -1,0 +1,47 @@
+@import '@shared/_mixins';
+
+.AffiliateReferral {
+  padding: 6rem 0;
+  .AboutReferral {
+    text-align: center;
+    max-width: 850px;
+    margin: auto;
+    margin-bottom: 4rem;
+    font-size: 1.428rem;
+    .Title {
+      font-size: 2.285rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+  .ReferralForm {
+    max-width: 750px;
+    margin: auto;
+    margin-bottom: 2rem;
+    h4 {
+      text-align: center;
+      margin: 3rem 0;
+    }
+    .ShareLink {
+      @include flex();
+      .Link {
+        width: 40px;
+        display: block;
+        margin-left: 10px;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .ReferralTitle {
+    text-align: center;
+    font-size: 2.285rem;
+    margin-bottom: 3rem;
+  }
+  .StepGroup {
+    h5 {
+      font-size: 1.571rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+}

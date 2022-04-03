@@ -1,0 +1,52 @@
+@import '@shared/_colors', '@shared/_mixins';
+
+.ModalOverlay {
+  @include flex($a: center, $j: center);
+  position: fixed;
+  background-color: rgba($black, 0.8);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  overflow: auto;
+  .Modal {
+    position: relative;
+    background-color: $white;
+    width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 5px;
+    max-width: 800px;
+    &.Xl {
+      max-width: calc(100% - 30px);
+    }
+    &.Md {
+      max-width: 800px;
+    }
+    &.Sm {
+      max-width: 500px;
+    }
+    .Header {
+      @include flex($a: center, $j: space-between);
+      padding: 20px 30px;
+      font-size: 1.28rem;
+      font-weight: 500;
+      border-bottom: 1px solid $silver;
+      .CloseBtn {
+        cursor: pointer;
+      }
+    }
+    .Body {
+      padding: 30px;
+    }
+    > .Footer {
+      @include flex($a: center, $j: space-between);
+      gap: 15px;
+      border-top: 1px solid $silver;
+      padding: 20px 30px;
+    }
+  }
+}
