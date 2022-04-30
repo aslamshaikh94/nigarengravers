@@ -1,19 +1,10 @@
 import React from 'react'
-import { callUploadDocumentsApi } from '@api'
-import { setLodingStatusAction } from '@actions'
-import { useStore } from '@store'
+import { callUploadProductImageApi } from '@api/home'
 import addToaster from '@shared/Notification'
 import './index.scss'
 
 const Dropzone = props => {
   const { label, onUpload } = props
-  const { useSelector } = useStore()
-
-  const { loggedInUserData: { userId = '' } = {} } = useSelector(state => {
-    return {
-      loggedInUserData: state.loggedInUserData
-    }
-  })
 
   const handleChange = async e => {
     let file = e.target.files[0]
@@ -22,14 +13,12 @@ const Dropzone = props => {
     let fileSize = (size / 1024 / 1024).toFixed(2)
 
     if (fileSize <= 5) {
-      setLodingStatusAction(true)
       try {
-        const { ref } = await callUploadDocumentsApi(userId, { name, file })
+        const { ref } = await callUploadProductImageApi({ name, file })
         const docUrl = await ref.getDownloadURL()
         onUpload({ name, fileType, docUrl })
-        setLodingStatusAction(false)
+        addToaster('success', 'Success')
       } catch (error) {
-        setLodingStatusAction(false)
         addToaster('error', error.message)
       }
     } else {

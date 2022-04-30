@@ -1,43 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Fancybox from '@components/Fancybox'
 import { Container } from 'react-bootstrap'
+import { callGetProductImagesApi } from '@api/home'
 import './index.scss'
 
 export default function Gallery() {
+  const [images, setImages] = useState([])
+  const getGalleryImages = async () => {
+    const res = await callGetProductImagesApi()
+    setImages(res)
+  }
+  useEffect(() => {
+    getGalleryImages()
+  }, [])
+
   return (
     <div className='gallery'>
       <Container>
-        <div>
+        <div className='images'>
           <Fancybox>
-            <p>
-              <a
-                data-fancybox='gallery'
-                href='https://lipsum.app/id/33/1024x768'
-              >
-                <img alt='' src='https://lipsum.app/id/33/200x150' />
-              </a>
-
-              <a
-                data-fancybox='gallery'
-                href='https://lipsum.app/id/34/1024x768'
-              >
-                <img alt='' src='https://lipsum.app/id/34/200x150' />
-              </a>
-
-              <a
-                data-fancybox='gallery'
-                href='https://lipsum.app/id/35/1024x768'
-              >
-                <img alt='' src='https://lipsum.app/id/35/200x150' />
-              </a>
-
-              <a
-                data-fancybox='gallery'
-                href='https://lipsum.app/id/36/1024x768'
-              >
-                <img alt='' src='https://lipsum.app/id/36/200x150' />
-              </a>
-            </p>
+            {images.map((url, i) => {
+              return (
+                <a data-fancybox='gallery' href={url} key={i}>
+                  <img alt='gallery' src={url} className='image' />
+                </a>
+              )
+            })}
           </Fancybox>
         </div>
       </Container>

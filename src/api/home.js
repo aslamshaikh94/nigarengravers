@@ -1,4 +1,4 @@
-import { db } from '@src/firebase'
+import { db, storage, serverTimestamp } from '@src/firebase'
 import addToaster from '@shared/Notification'
 
 import Axios from './axios'
@@ -41,6 +41,31 @@ export const callGetWhatWeDoDetailsApi = async () => {
     const { docs } = await db.collection('home/whatWeDo/items').get()
     const data = docs.map(doc => doc.data())
     return { status: 200, data }
+  } catch (error) {
+    addToaster('error', error.message)
+  }
+}
+
+/** Upload documents using user uid
+ * @param {Object} payload
+ * @param {Object} payload.uid
+ */
+export const callUploadProductImageApi = payload => {
+  const { name, file } = payload
+  return storage.ref(`/gallery/${name}-${serverTimestamp}`).put(file)
+}
+
+export const callGetProductImagesApi = async () => {
+  try {
+    const { items } = await storage.ref().child('gallery').listAll()
+    const imageList = await Promise.all(
+      items.map(async item => {
+        const url = await item.getDownloadURL()
+        return await url
+      })
+    )
+
+    return imageList
   } catch (error) {
     addToaster('error', error.message)
   }

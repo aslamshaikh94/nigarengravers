@@ -110,6 +110,7 @@ const Auth = () => {
             <InputField
               label='Email'
               name='email'
+              type='email'
               value={email}
               required
               error={error.email}

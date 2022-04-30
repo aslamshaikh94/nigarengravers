@@ -30,7 +30,7 @@
       @media (max-width: $mobileTab) {
         margin: 0;
       }
-      h2 {
+      h1 {
         color: $black;
         font-family: 'Playfair Display', serif;
         font-size: 5rem;
@@ -47,7 +47,7 @@
       }
       .subtitle {
         font-family: 'Playfair Display', serif;
-        font-size: 3rem;
+        font-size: 2.5rem;
         color: #74757f;
         @media (max-width: $mobileTab) {
           font-size: 2rem;

@@ -28,6 +28,9 @@ section {
       color: $black;
       font-family: 'Playfair Display', serif;
       font-size: 4rem;
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
     }
   }
 }

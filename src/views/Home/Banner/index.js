@@ -33,8 +33,8 @@ const Banner = () => {
             <Col lg={5}>
               <div className='intro'>
                 <div className='title'>quality guarantee</div>
-                <h2>{title}</h2>
-                <div className='subtitle'>{subTitle}</div>
+                <h1>{title}</h1>
+                <h2 className='subtitle'>{subTitle}</h2>
                 <div className='intro__text'>
                   <p>{description}</p>
                 </div>
