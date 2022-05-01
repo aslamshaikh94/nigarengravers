@@ -21,6 +21,7 @@
     "react": "^18.0.0",
     "react-bootstrap": "^2.1.0",
     "react-dom": "^18.0.0",
+    "react-ga": "^3.3.0",
     "react-phone-input-2": "^2.14.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
