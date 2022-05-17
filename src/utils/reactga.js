@@ -1,6 +1,6 @@
 import ReactGA from 'react-ga'
 export const ReactGAInitialize = () => {
-  ReactGA.initialize('UA-90470647-1', {
+  ReactGA.initialize('G-6LCJ1VGWGZ', {
     debug: true,
     titleCase: false,
     gaOptions: {

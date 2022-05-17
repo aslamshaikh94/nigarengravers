@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react'
+import React, { Suspense } from 'react'
 import history from '@history/'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { HOME_ROUTE, SIGNIN_ROUTE, ADMIN_ROUTE } from '@constants/routes'
@@ -9,12 +9,8 @@ import Auth from '@views/Auth'
 import Admin from '@views/Admin'
 import NotFound from '@views/NotFound'
 import PrivateRoute from '@shared/PrivateRoute'
-import { ReactGAInitialize } from '@utils/reactga'
 
 const App = () => {
-  useEffect(() => {
-    ReactGAInitialize()
-  }, [])
   return (
     <>
       <Router history={history}>
