@@ -36,6 +36,34 @@ export const callSetBannerDetailsApi = async payload => {
 /** Get bid details using user userId and profile id freelancerId
  * @param {Object} payload.userId
  */
+export const callSetImageGalleryApi = async payload => {
+  try {
+    await db.collection('gallery').add(payload)
+    addToaster('success', 'Sucsess')
+  } catch (error) {
+    addToaster('error', error.message)
+  }
+}
+
+/** Get bid details using user userId and profile id freelancerId
+ * @param {Object} payload.userId
+ */
+export const callGetImageGalleryApi = async () => {
+  try {
+    const { docs } = await db.collection('gallery').get()
+    const data = docs.map(item => {
+      const id = item.id
+      return { ...item.data(), id }
+    })
+    return { status: 200, data: data }
+  } catch (error) {
+    addToaster('error', error.message)
+  }
+}
+
+/** Get bid details using user userId and profile id freelancerId
+ * @param {Object} payload.userId
+ */
 export const callGetWhatWeDoDetailsApi = async () => {
   try {
     const { docs } = await db.collection('home/whatWeDo/items').get()

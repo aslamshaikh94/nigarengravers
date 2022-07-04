@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react'
-import { callGetProductImagesApi } from '@api/home'
-import { Container, Card, Row, Col } from 'react-bootstrap'
+import { callGetImageGalleryApi } from '@api/home'
+import { Row, Col } from 'react-bootstrap'
 import Dropzone from '@shared/Dropzone'
+import { callSetImageGalleryApi } from '@api/home'
 
 const Gallery = () => {
   const [images, setImages] = useState([])
   const getGalleryImages = async () => {
-    const res = await callGetProductImagesApi()
-    setImages(res)
+    const res = await callGetImageGalleryApi()
+    setImages(res.data)
   }
   useEffect(() => {
     getGalleryImages()
   }, [])
 
-  const handleOnUpload = res => {
-    setImages([...images, res.docUrl])
+  const handleOnUpload = async res => {
+    // setImages([...images, res.thumb])
+    getGalleryImages()
+    await callSetImageGalleryApi({ docUrl: res.docUrl, thumb: res.thumb })
   }
 
   return (
@@ -24,7 +27,7 @@ const Gallery = () => {
         {images.map((item, i) => {
           return (
             <Col lg={1} sm={6} md={6} xs={6} key={i}>
-              <img src={item} className='img-fluid' />
+              <img src={item.thumb} className='img-fluid' />
             </Col>
           )
         })}

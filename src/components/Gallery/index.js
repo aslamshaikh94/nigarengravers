@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Fancybox from '@components/Fancybox'
 import { Container } from 'react-bootstrap'
-import { callGetProductImagesApi } from '@api/home'
+import { callGetImageGalleryApi } from '@api/home'
 import './index.scss'
 
 export default function Gallery() {
   const [images, setImages] = useState([])
   const getGalleryImages = async () => {
-    const res = await callGetProductImagesApi()
-    setImages(res)
+    const res = await callGetImageGalleryApi()
+    setImages(res.data)
   }
   useEffect(() => {
     getGalleryImages()
@@ -19,10 +19,10 @@ export default function Gallery() {
       <Container>
         <div className='images'>
           <Fancybox>
-            {images.map((url, i) => {
+            {images.map((item, i) => {
               return (
-                <a data-fancybox='gallery' href={url} key={i}>
-                  <img alt='gallery' src={url} className='image' />
+                <a data-fancybox='gallery' href={item.docUrl} key={i}>
+                  <img alt='gallery' src={item.thumb} className='image' />
                 </a>
               )
             })}
