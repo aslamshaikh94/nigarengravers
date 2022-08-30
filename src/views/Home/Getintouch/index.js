@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import emailjs from 'emailjs-com'
+import { callGetInTouchSendEmail } from '@api/home'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { InputField, Textarea } from '@shared/FormFields'
 import addToaster from '@shared/Notification'
@@ -13,24 +13,10 @@ const Getintouch = () => {
     setFormData({ ...formData, [name]: value })
   }
 
-  const sendEmail = e => {
+  const sendEmail = async e => {
     e.preventDefault()
-
-    emailjs
-      .sendForm(
-        'service_5wu9pci',
-        'template_8ynt6kc',
-        e.target,
-        'elTlAkHDsSBeXkV5r'
-      )
-      .then(
-        () => {
-          addToaster('success', 'Thank you! We will connect you soon')
-        },
-        error => {
-          addToaster('error', error.text)
-        }
-      )
+    const res = await callGetInTouchSendEmail(formData)
+    console.log('🚀 ~ file: index.js ~ line 20 ~ sendEmail ~ res', res)
   }
 
   const { name, email, mobile, message } = formData

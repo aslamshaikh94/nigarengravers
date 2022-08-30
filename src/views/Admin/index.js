@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { SIGNIN_ROUTE } from '@constants/routes'
 import Banner from './Banner'
 import Gallery from './Gallery'
+import Head from './Head'
 
 const Admin = () => {
   const { loggedInUserData: { userId } = {} } = useSelector(state => state.auth)
@@ -14,6 +15,7 @@ const Admin = () => {
       <Container>
         <Card>
           <Card.Body>
+            <Head />
             <Banner />
             <hr />
             <Gallery />

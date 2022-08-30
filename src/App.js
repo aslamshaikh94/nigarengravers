@@ -1,13 +1,13 @@
-import React, { Suspense } from 'react'
+import React, { lazy, Suspense } from 'react'
 import history from '@history/'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { HOME_ROUTE, SIGNIN_ROUTE, ADMIN_ROUTE } from '@constants/routes'
 import { ToastContainer } from 'react-toastify'
 import Header from '@components/Header'
 import Home from '@views/Home'
-import Auth from '@views/Auth'
-import Admin from '@views/Admin'
-import NotFound from '@views/NotFound'
+const Auth = lazy(() => import('@views/Auth'))
+const Admin = lazy(() => import('@views/Admin'))
+const NotFound = lazy(() => import('@views/NotFound'))
 import PrivateRoute from '@shared/PrivateRoute'
 
 const App = () => {

@@ -1,11 +1,43 @@
 const express = require('express')
+const nodemailer = require('nodemailer')
 const path = require('path')
 const app = express()
+app.use(express.json())
 
 app.use(express.static(path.join(__dirname, '/build')))
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, '/build', 'index.html'))
+})
+
+app.post('/mail', (req, res) => {
+  const { name, email, mobile, message } = req.body
+  console.log(req.body)
+  let transporter = nodemailer.createTransport({
+    host: 'nigarengravers.com',
+    secure: false,
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.EMAIL_PASS
+    }
+  })
+
+  let mailOptions = {
+    from: process.env.EMAIL,
+    to: email,
+    subject: 'Get in Touch',
+    text: `<h4>${name}</h4> <p>${email}</p> <p>${mobile}</p> <p>${message}</p>`
+  }
+
+  transporter.sendMail(mailOptions, (error, success) => {
+    if (error) {
+      res.status(400).json({ message: error })
+    } else {
+      res.status(200).json({
+        message: `An email has been sent to ${email} please check your inbox`
+      })
+    }
+  })
 })
 
 app.get('*', function (req, res) {

@@ -1,6 +1,5 @@
 import { db, storage, serverTimestamp } from '@src/firebase'
 import addToaster from '@shared/Notification'
-
 import Axios from './axios'
 /**
  * Get Main banner info
@@ -94,6 +93,16 @@ export const callGetProductImagesApi = async () => {
     )
 
     return imageList
+  } catch (error) {
+    addToaster('error', error.message)
+  }
+}
+
+/** Send email verification */
+export const callGetInTouchSendEmail = async payload => {
+  try {
+    const res = await Axios.post('/mail', payload)
+    return res
   } catch (error) {
     addToaster('error', error.message)
   }
