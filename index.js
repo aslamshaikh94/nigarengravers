@@ -28,9 +28,9 @@ app.post('/mail', (req, res) => {
 
   let mailOptions = {
     from: process.env.EMAIL,
-    to: email,
+    to: process.env.EMAIL,
     subject: 'Get in Touch',
-    text: `<h4>${name}</h4> <p>${email}</p> <p>${mobile}</p> <p>${message}</p>`
+    html: `<h4>${name}</h4> <p>${email}</p> <p>${mobile}</p> <p>${message}</p>`
   }
 
   transporter.sendMail(mailOptions, (error, success) => {
