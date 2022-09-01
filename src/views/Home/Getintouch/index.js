@@ -15,8 +15,10 @@ const Getintouch = () => {
 
   const sendEmail = async e => {
     e.preventDefault()
-    const res = await callGetInTouchSendEmail(formData)
-    console.log('🚀 ~ file: index.js ~ line 20 ~ sendEmail ~ res', res)
+    const { status } = await callGetInTouchSendEmail(formData)
+    if (status === 200) {
+      addToaster('success', 'Thank you! We will connect you soon')
+    }
   }
 
   const { name, email, mobile, message } = formData
