@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunknigar=self.webpackChunknigar||[]).push([[594],{3594:(e,n,t)=>{t.r(n),t.d(n,{default:()=>a});var u=t(7294);const a=function(){return u.createElement("h1",null,"Page not found")}}}]);
+//# sourceMappingURL=594.630c5002fa8a7486b89f.js.map

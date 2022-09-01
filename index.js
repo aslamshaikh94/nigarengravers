@@ -12,13 +12,17 @@ app.get('/', function (req, res) {
 
 app.post('/mail', (req, res) => {
   const { name, email, mobile, message } = req.body
-  console.log(req.body)
   let transporter = nodemailer.createTransport({
-    host: 'nigarengravers.com',
-    secure: false,
+    host: 'mail.nigarengravers.com',
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL,
       pass: process.env.EMAIL_PASS
+    },
+    tls: {
+      // do not fail on invalid certs
+      rejectUnauthorized: false
     }
   })
 
