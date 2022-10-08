@@ -1,0 +1,1 @@
+{"version":3,"file":"594.63a051ac40d39e81dcb9.js","mappings":"yIAMA,QAJiB,WACf,OAAO,2CACR,C","sources":["webpack://nigar/./src/views/NotFound/index.js"],"sourcesContent":["import React from \"react\";\n\nconst NotFound = () => {\n  return <h1>Page not found</h1>;\n};\n\nexport default NotFound;\n"],"names":[],"sourceRoot":""}

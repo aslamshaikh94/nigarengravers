@@ -2,7 +2,6 @@ import React from 'react'
 import Banner from '@views/Home/Banner'
 import Getintouch from '@views/Home/Getintouch'
 import Whatwedo from '@views/Home/Whatwedo'
-import { Container } from 'react-bootstrap'
 
 const Home = () => {
   return (
