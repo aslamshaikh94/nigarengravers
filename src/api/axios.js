@@ -1,6 +1,6 @@
 import Axios from 'axios'
 import { getAppStore } from '@store/index'
-import history from '@history/'
+
 // import { encryptRequest, decryptResponse } from "@utils/crypto";
 
 /**
@@ -43,7 +43,7 @@ const responseErrorInterceptor = err => {
   }
 
   if (status === 503) {
-    history.push(UNDER_MAINTENANCE_ROUTE)
+    // history.push(UNDER_MAINTENANCE_ROUTE)
   }
 
   if (!!errorJSON && errorJSON.code === 'ECONNABORTED') {

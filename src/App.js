@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from 'react'
-import history from '@history/'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { HOME_ROUTE, SIGNIN_ROUTE, ADMIN_ROUTE } from '@constants/routes'
 import { ToastContainer } from 'react-toastify'
@@ -13,7 +12,7 @@ import PrivateRoute from '@shared/PrivateRoute'
 const App = () => {
   return (
     <>
-      <Router history={history}>
+      <Router>
         <Suspense fallback={'Loading'}>
           <Header />
           <Routes>
