@@ -4,10 +4,11 @@ const dotenv = require('dotenv')
 const webpack = require('webpack')
 
 const env = dotenv.config().parsed
-const envVars = Object.keys(env).reduce((obj, key) => {
-  obj[`process.env.${key}`] = JSON.stringify(env[key])
-  return obj
-}, {})
+const envVars =
+  Object.keys(env).reduce((obj, key) => {
+    obj[`process.env.${key}`] = JSON.stringify(env[key])
+    return obj
+  }, {}) || {}
 
 module.exports = {
   output: {
